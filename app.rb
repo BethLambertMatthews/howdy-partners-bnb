@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
+require './lib/database/database_connection_setup'
 
 class HowdyPartnersBnB < Sinatra::Base
   configure :development do
