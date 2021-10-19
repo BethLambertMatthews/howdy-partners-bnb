@@ -9,9 +9,18 @@
 <body>
   <h1>Sign up for Howdy Partners Bnb</h1>
   <form method='post' action='/sign-up'>
-    <input type='text' name='name'/>
-    <input type='text' name='email'/>
-    <input type='text' name='password'/>
+    <div>
+      <label for="username">Name:</label>
+      <input id="username" type='text' name='name' required>
+    </div>
+    <div>
+      <label for="email">Email:</label>
+        <input id="email" type='text' name='email' required/>
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input id="password" type='text' name='password' required/>
+    </div>
     <input type='submit' value='Sign Up'/>
   </form>
 </body>

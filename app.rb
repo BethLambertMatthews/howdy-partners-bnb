@@ -7,9 +7,13 @@ class HowdyPartnersBnB < Sinatra::Base
   configure :development do
     register Sinatra::Reloader
   end
+  
+  enable :sessions
+  
 
   get '/' do
-    'Howdy Partners :)'
+    puts session[:current_user]
+    "Howdy Partners :) current user id:#{session[:current_user]}"
   end
 
   get '/sign-up' do
@@ -17,7 +21,8 @@ class HowdyPartnersBnB < Sinatra::Base
   end
 
   post '/sign-up' do
-    User.create_user(params[:name], params[:email], params[:password])
+    new_user_id = User.create_user(params[:name], params[:email], params[:password])
+    session[:current_user] = new_user_id
     redirect('/')
   end
 

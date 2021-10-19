@@ -5,9 +5,10 @@ class User
   end
 
   def self.create_user(name, email, password)
-    query = 'INSERT INTO users (name, email, password) VALUES ($1, $2, $3);'
+    query = 'INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING id;'
     params = [name, email, password]
-    DatabaseConnection.query(query, params)
+    new_user_id = DatabaseConnection.query(query, params)
+    return new_user_id[0]['id']
   end
 
 end
