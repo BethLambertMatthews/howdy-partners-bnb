@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
 require './lib/database/database_connection_setup'
+require './lib/model/user'
 
 class HowdyPartnersBnB < Sinatra::Base
   configure :development do
@@ -16,7 +17,7 @@ class HowdyPartnersBnB < Sinatra::Base
   end
 
   post '/sign-up' do
-    p params
+    User.create_user(params[:name], params[:email], params[:password])
     redirect('/')
   end
 
