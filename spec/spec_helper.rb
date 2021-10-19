@@ -18,6 +18,10 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
 SimpleCov.start
 
 RSpec.configure do |config|
+
+  config.before(:each) do
+    setup_test_database
+  end
   
   config.expect_with :rspec do |expectations|
    
