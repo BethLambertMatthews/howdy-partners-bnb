@@ -8,9 +8,8 @@ body {
   border: 8px solid skyblue;
   border-radius: 5px;
   margin: auto;
-  margin-top: 50px;
-  max-width: 500px;
-  min-width: 50px;
+  margin-top: 20px;
+  width: 50%;
   padding-bottom: 10px;
   background-color: aliceblue;
 }
@@ -18,11 +17,11 @@ body {
 .form-container {
   margin: auto;
   width: 40%;
-  text-align: left;
+  text-align: center;
 }
 
 .form-field {
-  padding: 5px;
+  padding: 2px;
 }
 
 .center-button {
@@ -38,5 +37,6 @@ body {
   margin: 5px;
   text-align: center;
   text-decoration: none;
+  display: inline-block;
   font-size: 1rem;
 }
