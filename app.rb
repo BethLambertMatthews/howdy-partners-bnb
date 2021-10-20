@@ -36,5 +36,15 @@ class HowdyPartnersBnB < Sinatra::Base
     redirect('/')
   end
 
+  get '/login' do
+    erb :login
+  end
+
+  post '/login' do
+    existing_user_id = User.log_in(params[:email], params[:password])
+    session[:current_user] = existing_user_id
+    redirect('/')
+  end
+
   run! if app_file == $0
 end
