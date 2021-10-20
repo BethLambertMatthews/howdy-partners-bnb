@@ -4,24 +4,31 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/styles.css" rel="stylesheet">
   <title>Sign Up</title>
 </head>
 <body>
+  <div class="sign-up-container">
   <h1>Sign up for Howdy Partners Bnb</h1>
-  <form method='post' action='/sign-up'>
-    <div>
-      <label for="username">Name:</label>
-      <input id="username" type='text' name='name' required>
+    <div class="form-container">
+      <form method='post' action='/sign-up'>
+        <div class="form-field">
+          <label class="form-label" for="username">Name:</label><br>
+          <input id="username" type='text' name='name' placeholder="name" required>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="email">Email:</label><br>
+            <input id="email" type='text' name='email' placeholder="email" required/>
+        </div>
+        <div class="form-field">
+          <label class="form-label" for="password">Password:</label><br>
+          <input id="password" type='password' name='password' placeholder="password" required/>
+        </div>
+        <div class="form-field center-button">
+          <input class="button" type='submit' value='Sign Up'/>
+        </div>
+      </form>
     </div>
-    <div>
-      <label for="email">Email:</label>
-        <input id="email" type='text' name='email' required/>
-    </div>
-    <div>
-      <label for="password">Password:</label>
-      <input id="password" type='text' name='password' required/>
-    </div>
-    <input type='submit' value='Sign Up'/>
-  </form>
+  </div>
 </body>
 </html>
