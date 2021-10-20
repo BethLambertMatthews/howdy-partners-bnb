@@ -8,11 +8,22 @@
   <title>Howdy Partners BnB</title>
 </head>
 <body>
-<p>Howdy Partners :) current user id:<%=@current_user%></p>
-<%@all_properties.each do|property| %>
-  <p><%=property.name%></p>
-  <p>£<%=property.price%></p>
-  <hr>
-<%end%>
+  <div class="home-container">
+    <h1 class="page-title">Howdy Partners BnB &#129312;</h1>
+    <p class="tag-line">Your go-to place for the rootinist tootinist holiday homes in the wild west.</p>
+    <hr class="heading-rule">
+    <div class="property-listings">
+      <%@all_properties.each do|property| %>
+        <div class="property">
+          <h3><%=property.name%></h3>
+          <img src="https://picsum.photos/300/200">
+          <p><%=property.description%></p>
+          <p>£<%=property.price%></p>
+          <hr>
+        </div>
+      <%end%>
+    </div>
+  </div>
+  <p>Howdy Partners :) current user id:<%=@current_user%></p>
 </body>
 </html>
