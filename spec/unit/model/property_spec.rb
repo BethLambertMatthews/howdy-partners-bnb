@@ -24,4 +24,30 @@ describe Property do
       expect(property.price).to eq(59.99)
     end
   end
+  describe 'all_properties' do
+    context 'there are no properties' do
+      it 'returns an empty array' do
+        select_query = "SELECT * FROM property_listings"
+        expect(DatabaseConnection).to receive(:query).with(select_query,[]).and_return []
+        result = Property.all_properties
+        expect(result).to eq([])
+      end
+    end
+
+    context 'there are three properties' do
+      it 'returns an array of all properties' do
+        select_query = "SELECT * FROM property_listings"
+        response = [
+          { "id" => "1", "name" => "The Rodeo", "description" => "A great place to stay", "price" => "100.00"},
+          { "id" => "2", "name" => "The Homestead", "description" => "A not so place to stay", "price" => "80.00"},
+          { "id" => "3", "name" => "The Barn", "description" => "A terrible place to stay", "price" => "60.00"}
+        ]
+        expect(DatabaseConnection).to receive(:query).with(select_query,[]).and_return(response)
+        result = Property.all_properties
+        expect(result[0].name).to eq("The Rodeo")
+        expect(result[1].name).to eq("The Homestead")
+        expect(result[2].name).to eq("The Barn")
+      end
+    end
+  end
 end
