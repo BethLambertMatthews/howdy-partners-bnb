@@ -1,4 +1,4 @@
-# howdy-partners-bnb
+# Howdy Partners BnB
 
 ## Basic class diagram
 
