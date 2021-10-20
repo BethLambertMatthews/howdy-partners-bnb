@@ -1,11 +1,13 @@
 require 'pg'
 
 def setup_test_database
-  connection.exec("TRUNCATE property_listings; TRUNCATE users;")
+  connection = connect
+  connection.exec("TRUNCATE property_listings;")
+  connection.exec("TRUNCATE users;")
 end
 
 private
 
-def connection
+def connect
   PG.connect(dbname: 'howdy_partners_test')
 end
