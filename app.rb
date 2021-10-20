@@ -41,9 +41,13 @@ class HowdyPartnersBnB < Sinatra::Base
   end
 
   post '/login' do
-    existing_user_id = User.log_in(params[:email], params[:password])
-    session[:current_user] = existing_user_id
-    redirect('/')
+    result = User.log_in(params[:email], params[:password])
+    if result == "This user does not exist"
+      redirect('/login')
+    else
+      session[:current_user] = result
+      redirect('/')
+    end
   end
 
   run! if app_file == $0
