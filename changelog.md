@@ -1,5 +1,22 @@
 ## Changelog
 
+### Date - Time: 20/10/2021 - 11:06
+
+Description: Added 'add property' functionality to create property listing in howdy partners database.
+
+### Added
+
+- property.rb
+- add-new-property_spec.rb
+- property_spec.rb
+- add_new_property.erb
+### Changed
+
+- app.rb
+### Fixed
+- merge conflicts
+---
+
 ---
 
 ## Ticket name: HP-feature_02

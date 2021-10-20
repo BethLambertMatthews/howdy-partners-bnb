@@ -1,9 +1,10 @@
-<form method="post" action="/new-property" >
-  <input type="text" name="name" placeholder="Property Name" maxlength="60" required>
-  <textarea name="description" placeholder="Property Description" maxlength="300" required> </textarea>
-  <input type="text" name="price" placeholder="Property Price" required>
-  <input type="submit" value="Submit">
-</form>
-
-
-
+<h1>Add a new property listing</h1>
+  <form method="post" action="/add-new-property" >
+    <label for="Name of property">Name of property:</label>
+    <input type="text" name="name" placeholder="Property Name" maxlength="60" required><br>
+    <label for="Property price per night">Property price per night:</label>
+    <input type="number" name="price" max="999.99" placeholder="Property Price" required><br>
+    <label for="Description of property">Description of property:</label>
+    <textarea name="description" placeholder="Property Description" maxlength="300" required></textarea><br>
+    <input type="submit" value="Submit">
+  </form>

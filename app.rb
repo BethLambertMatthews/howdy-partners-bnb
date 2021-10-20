@@ -1,7 +1,7 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
 require './lib/database/database_connection_setup'
-require './lib/property'
+require './lib/model/property'
 require './lib/model/user'
 
 class HowdyPartnersBnB < Sinatra::Base
@@ -28,10 +28,10 @@ class HowdyPartnersBnB < Sinatra::Base
   end
 
   get '/add-new-property' do
-    erb(:add_new_property)
+    erb :add_new_property
   end
 
-  post '/new-property' do
+  post '/add-new-property' do
     Property.add_property(params[:name], params[:description], params[:price])
     redirect('/')
   end
