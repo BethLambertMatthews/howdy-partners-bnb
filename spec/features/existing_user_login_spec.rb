@@ -3,7 +3,7 @@ feature 'Existing user login: ' do
       test_email = 'kingcowboydylan@yeehaw.com'
       test_password = 'buckar00'
       
-    #   expect(User).to receive(:log_in).with(test_email, test_password)
+      expect(User).to receive(:log_in).with(test_email, test_password)
   
       visit('/login')
       fill_in 'email', with: test_email

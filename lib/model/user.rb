@@ -15,7 +15,6 @@ class User
     query = 'SELECT * FROM users WHERE email = $1 AND password = $2;'
     params = [email, password]
     existing_user_id = DatabaseConnection.query(query, params)
-    puts existing_user_id
-    return existing_user_id
+    return existing_user_id[0]['id']
   end
 end

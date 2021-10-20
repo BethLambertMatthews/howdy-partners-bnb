@@ -20,10 +20,10 @@ describe User do
       select_params = ['john.wayne@yeehaw.com', 'Cactus123']
       expected_id = "1"
 
-      expect(DatabaseConnection).to receive(:query).with(select_query, select_params)
+      expect(DatabaseConnection).to receive(:query).with(select_query, select_params).and_return([{ 'id' => expected_id }])
       result = User.log_in(select_params[0], select_params[1])
 
-      # expect(result).to eq expected_id
+      expect(result).to eq expected_id
     end
   end
 end
