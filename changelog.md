@@ -1,7 +1,6 @@
 ## Changelog
 
 ---
-
 ## Ticket name: HP-bugfix_02
 
 ### Date - Time: 21/10/2021 - 14:25
@@ -15,6 +14,19 @@ Description: update feature test existing_user_login_spec.rb
 - spec/setup_test_database.rb
 
 ### Fixed
+
+---
+## Ticket name: HP-feature_07
+
+### Date - Time: 21/10/2021 - 14:20
+
+Description: Added link to signup on login page.
+
+### Added
+
+### Changed
+- existing_user_login_spec.rb
+- login.erb
 
 ---
 

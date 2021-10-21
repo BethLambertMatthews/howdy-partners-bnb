@@ -2,6 +2,14 @@ require 'web_helpers'
 require 'setup_test_database'
 
 feature 'Existing user login: ' do
+
+  scenario 'when they visit the login page' do
+    visit ('/login')
+    expect(page).to have_content("Sign up here")
+    click_link('here')
+    expect(page).to have_current_path('/sign-up')
+  end
+    
   scenario 'existing user can log in to their account' do
     create_test_user
     add_test_user_to_database
