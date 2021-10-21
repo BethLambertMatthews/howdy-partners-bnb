@@ -1,7 +1,7 @@
 require 'model/user'
 
 describe User do
-  let(:mocked_database_response) {double :mocked_database_response}
+  let(:mocked_database_response) { double :mocked_database_response }
 
   describe '#create_user' do
     it 'inserts a new user into the users table' do

@@ -1,4 +1,7 @@
 <h1>Log in with your details</h1>
+
+<h2><%= flash[:notice] %></h2>
+
   <form method="post" action="/login" >
     <label for="email">Email:</label>
     <input type="email" name="email" placeholder="Your email" maxlength="60" required><br>

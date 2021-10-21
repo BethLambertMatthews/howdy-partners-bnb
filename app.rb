@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
+require 'sinatra/flash'
 require './lib/database/database_connection_setup'
 require './lib/model/property'
 require './lib/model/user'
@@ -10,7 +11,7 @@ class HowdyPartnersBnB < Sinatra::Base
   end
   
   enable :sessions
-  
+  register Sinatra::Flash
 
   get '/' do
     puts session[:current_user]
@@ -43,6 +44,7 @@ class HowdyPartnersBnB < Sinatra::Base
   post '/login' do
     result = User.log_in(params[:email], params[:password])
     if result == "This user does not exist"
+      flash[:notice] = "Sorry, we didn't recognise those details. Please try again."
       redirect('/login')
     else
       session[:current_user] = result

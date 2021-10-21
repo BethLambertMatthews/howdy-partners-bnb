@@ -1,5 +1,30 @@
 ## Changelog
 
+---
+
+## Ticket name: HP-feature_03
+
+### Date - Time: 21/10/2021 - 10:25
+
+Description: An existing user can log into their account
+
+### Added
+- spec/features/existing_user_login_spec.rb
+- views/login.erb
+
+### Changed
+- Gemfile
+- Gemfile.lock
+- app.rb
+- lib/model/user.rb
+- spec/unit/model/user_spec.rb
+
+### Fixed
+
+---
+
+## Ticket name: HP-feature_09
+
 ### Date - Time: 20/10/2021 - 11:06
 
 Description: Added 'add property' functionality to create property listing in howdy partners database.
@@ -15,7 +40,6 @@ Description: Added 'add property' functionality to create property listing in ho
 - app.rb
 ### Fixed
 - merge conflicts
----
 
 ---
 
