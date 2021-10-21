@@ -1,4 +1,12 @@
 feature 'Existing user login: ' do
+
+  scenario 'when they visit the login page' do
+    visit ('/login')
+    expect(page).to have_content("Sign up here")
+    click_link('here')
+    expect(page).to have_current_path('/sign-up')
+  end
+    
   scenario 'existing user can log in to their account' do
     test_email = 'kingcowboydylan@yeehaw.com'
     test_password = 'buckar00'
