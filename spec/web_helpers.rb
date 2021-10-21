@@ -1,7 +1,7 @@
 def create_test_user
   @test_name = 'John Wayne'
   @test_email = 'john.wayne@yeehaw.com'
-  @test_password = 'Cactus123'\
+  @test_password = 'Cactus123'
 end
 
 def sign_up_test_user
