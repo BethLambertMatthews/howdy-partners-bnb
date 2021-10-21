@@ -16,3 +16,9 @@ def create_and_sign_up_test_user
   create_test_user
   sign_up_test_user
 end
+
+def visit_more_details_page
+  visit('/')
+  click_link('view_details_1')
+  expect(page).to have_current_path '/listing-details/1'
+end

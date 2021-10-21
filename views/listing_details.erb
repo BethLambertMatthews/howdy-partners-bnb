@@ -15,6 +15,16 @@
         <p><%=@property.description%></p>
         <p>£<%=@property.price%></p>
       </div>
+      <div>
+        <%= flash[:notice] %>
+        <% if @current_user == nil %>
+          <a id="login-link" href="/login"><button class="button">Log in to book</button></a>
+        <% else %>
+          <form method="post" action="/request-booking/<%= @property.id %>">
+            <input type="submit" value="Request to book" class="button">
+          </form>
+        <% end %>
+      </div>
   </div>
   <p>Howdy Partners :) current user id:<%=@current_user%></p>
 </body>
