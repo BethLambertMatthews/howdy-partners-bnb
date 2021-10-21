@@ -1,6 +1,8 @@
 require 'model/property'
 
 describe Property do
+  let(:mocked_database_response) { double :mocked_database_response }
+
   describe 'add_property' do
     it 'adds a property to the database' do
       insert_query = "INSERT INTO property_listings(name, description, price) VALUES($1, $2, $3) RETURNING id, name, description, price;"
@@ -27,7 +29,7 @@ describe Property do
   describe 'all_properties' do
     context 'there are no properties' do
       it 'returns an empty array' do
-        select_query = "SELECT * FROM property_listings"
+        select_query = "SELECT * FROM property_listings;"
         expect(DatabaseConnection).to receive(:query).with(select_query,[]).and_return []
         result = Property.all_properties
         expect(result).to eq([])
@@ -36,7 +38,7 @@ describe Property do
 
     context 'there are three properties' do
       it 'returns an array of all properties' do
-        select_query = "SELECT * FROM property_listings"
+        select_query = "SELECT * FROM property_listings;"
         response = [
           { "id" => "1", "name" => "The Rodeo", "description" => "A great place to stay", "price" => "100.00" },
           { "id" => "2", "name" => "The Homestead", "description" => "A not so place to stay", "price" => "80.00" },
@@ -47,6 +49,32 @@ describe Property do
         expect(result[0].name).to eq("The Rodeo")
         expect(result[1].name).to eq("The Homestead")
         expect(result[2].name).to eq("The Barn")
+      end
+    end
+  end
+
+  describe '#find_by_id' do
+    context 'there is no matching property' do
+      it 'returns an empty array' do
+        select_query = "SELECT * FROM property_listings WHERE id = $1;"
+        select_param = ['1']
+        expect(DatabaseConnection).to receive(:query).with(select_query,select_param).and_return []
+        result = Property.find_by_id(select_param.first)
+        expect(result).to eq(nil)
+      end
+    end
+
+    context 'there is a matching property' do
+      it 'returns an array of all properties' do
+        select_query = "SELECT * FROM property_listings WHERE id = $1;"
+        select_param = ['1']
+        response = [{ "id" => "1", "name" => "The Rodeo", "description" => "A great place to stay", "price" => "100.00" }]
+      
+        expect(DatabaseConnection).to receive(:query).with(select_query, select_param).and_return(response)
+
+        result = Property.find_by_id(select_param.first)
+        
+        expect(result.name).to eq("The Rodeo")
       end
     end
   end

@@ -16,11 +16,6 @@ class User
     params = [email, password]
     result = DatabaseConnection.query(query, params)
 
-    if result.num_tuples.zero?
-      return "This user does not exist"
-    else
-      return result[0]['id']
-    end
-    
+    result.num_tuples.zero? ? "This user does not exist" : result[0]['id']    
   end
 end

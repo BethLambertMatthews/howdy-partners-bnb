@@ -19,6 +19,13 @@ class HowdyPartnersBnB < Sinatra::Base
     erb :index
   end
 
+  get '/listing-details/:id' do
+    @property = Property.find_by_id(params[:id])
+    @current_user = session[:current_user]
+    redirect('/') if @property.nil?
+    erb :listing_details
+  end
+
   get '/sign-up' do
     erb :sign_up
   end
