@@ -11,4 +11,16 @@ class User
     return new_user_id[0]['id']
   end
 
+  def self.log_in(email, password)
+    query = 'SELECT * FROM users WHERE email = $1 AND password = $2;'
+    params = [email, password]
+    result = DatabaseConnection.query(query, params)
+
+    if result.num_tuples.zero?
+      return "This user does not exist"
+    else
+      return result[0]['id']
+    end
+    
+  end
 end
