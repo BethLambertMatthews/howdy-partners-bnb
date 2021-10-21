@@ -5,7 +5,7 @@
 
 ### Date - Time: 21/10/2021 - 14:20
 
-Description: An existing user can log into their account
+Description: Added link to signup on login page.
 
 ### Added
 
