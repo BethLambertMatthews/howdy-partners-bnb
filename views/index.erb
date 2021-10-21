@@ -21,6 +21,8 @@
         <form method="post" action="/logout">
           <input class="button" type="submit" value="Log Out"/>
         </form>
+      <%else%>
+        <a id="login-link" href="/login"><button class="button">Log In</button></a>
       <%end%>
     </div>
 
