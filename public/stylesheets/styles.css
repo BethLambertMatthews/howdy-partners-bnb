@@ -54,6 +54,8 @@ body {
 }
 
 .page-button-bar {
+  border-bottom: 5px solid indianred;
+  border-bottom: 5px solid indianred;
   text-align: right;
   margin: -10px;
   background-color: orange;
