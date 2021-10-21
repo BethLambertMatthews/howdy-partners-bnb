@@ -34,4 +34,8 @@ We decided our Minimum Viable Product (MVP) specifications should be:
 
 ![signup_control_flow.svg](docs/signup_control_flow.svg)
 
+## Control flow diagram - View properties
+
+![view_properties_control_flow.svg](docs/view_properties_control_flow.svg)
+
 
