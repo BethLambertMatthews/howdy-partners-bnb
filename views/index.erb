@@ -14,6 +14,11 @@
       <p class="tag-line">Your go-to place for the rootinist tootinist holiday homes in the wild west.</p>
       <hr class="heading-rule">
     </div>
+    <div>
+      <% if @current_user != nil%>
+        <a id="new-property-link" class="button" href="/add-new-property">Add Listing</a>
+      <%end%>
+    </div>
     <div class="property-listings">
       <%@all_properties.each do|property| %>
         <div class="property">

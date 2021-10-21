@@ -38,9 +38,9 @@ describe Property do
       it 'returns an array of all properties' do
         select_query = "SELECT * FROM property_listings"
         response = [
-          { "id" => "1", "name" => "The Rodeo", "description" => "A great place to stay", "price" => "100.00"},
-          { "id" => "2", "name" => "The Homestead", "description" => "A not so place to stay", "price" => "80.00"},
-          { "id" => "3", "name" => "The Barn", "description" => "A terrible place to stay", "price" => "60.00"}
+          { "id" => "1", "name" => "The Rodeo", "description" => "A great place to stay", "price" => "100.00" },
+          { "id" => "2", "name" => "The Homestead", "description" => "A not so place to stay", "price" => "80.00" },
+          { "id" => "3", "name" => "The Barn", "description" => "A terrible place to stay", "price" => "60.00" }
         ]
         expect(DatabaseConnection).to receive(:query).with(select_query,[]).and_return(response)
         result = Property.all_properties
