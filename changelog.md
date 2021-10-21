@@ -1,6 +1,34 @@
 ## Changelog
 
 ---
+## Ticket name: HP-bugfix_02
+
+### Date - Time: 21/10/2021 - 14:25
+
+Description: update feature test existing_user_login_spec.rb
+
+### Added
+
+### Changed
+- spec/features/existing_user_login_spec.rb
+- spec/setup_test_database.rb
+
+### Fixed
+
+---
+## Ticket name: HP-feature_07
+
+### Date - Time: 21/10/2021 - 14:20
+
+Description: Added link to signup on login page.
+
+### Added
+
+### Changed
+- existing_user_login_spec.rb
+- login.erb
+
+---
 
 ## Ticket name: HP-feature_03
 
@@ -18,6 +46,9 @@ Description: An existing user can log into their account
 - app.rb
 - lib/model/user.rb
 - spec/unit/model/user_spec.rb
+
+---
+
 ## Ticket name: HP-feature_01
 
 ### Date - Time: 20/10/2021 - 15:25
