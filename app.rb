@@ -53,5 +53,11 @@ class HowdyPartnersBnB < Sinatra::Base
     end
   end
 
+  post '/logout' do
+    result = User.log_out
+    session[:current_user] = result
+    redirect('/')
+  end
+
   run! if app_file == $0
 end

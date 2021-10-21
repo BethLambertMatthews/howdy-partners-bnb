@@ -23,4 +23,10 @@ class User
     end
     
   end
+
+  def self.log_out
+    logged_out_id = nil
+    return logged_out_id
+  end
+
 end

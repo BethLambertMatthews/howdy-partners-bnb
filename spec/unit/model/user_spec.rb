@@ -46,4 +46,15 @@ describe User do
 
   end
 
+  describe '#log-out' do
+    it 'allows a logged in user to log out' do
+      logged_in_id = "1"
+      # when button is clicked, current user is set to nil
+      result = User.log_out
+
+      expect(result).to eq(nil)
+    end
+
+  end
+
 end
