@@ -1,12 +1,13 @@
 require 'model/property'
+require 'helpers/property_status'
 
 describe Property do
   let(:mocked_database_response) { double :mocked_database_response }
 
   describe 'add_property' do
     it 'adds a property to the database' do
-      insert_query = "INSERT INTO property_listings(name, description, price) VALUES($1, $2, $3) RETURNING id, name, description, price;"
-      insert_params = ['The Ranch', 'A good place for horses', 59.99]
+      insert_query = "INSERT INTO property_listings(name, description, price, status) VALUES($1, $2, $3, $4) RETURNING id, name, description, price, status;"
+      insert_params = ['The Ranch', 'A good place for horses', 59.99, PropertyStatus::AVAILABLE]
       expected_id = "1"
         
       expect(DatabaseConnection).to receive(:query).with(insert_query, insert_params)
@@ -15,10 +16,11 @@ describe Property do
               'id' => expected_id, 
               'name' => insert_params[0], 
               'description' => insert_params[1], 
-              'price' => insert_params[2]
+              'price' => insert_params[2],
+              'status' => insert_params[3]
               }])
                 
-      property = Property.add_property(insert_params[0], insert_params[1], insert_params[2])
+      property = Property.add_property(insert_params[0], insert_params[1], insert_params[2], insert_params[3])
         
       expect(property.id).to eq(expected_id)
       expect(property.name).to eq("The Ranch")
@@ -32,7 +34,7 @@ describe Property do
       expected_status = "requested"
       update_query = "UPDATE property_listings SET status=$1 WHERE id=$2 RETURNING status;"
       update_params = [PropertyStatus::REQUESTED, '1']
-        
+
       expect(DatabaseConnection).to receive(:query).with(update_query, update_params)
         .and_return([{'status' => expected_status}])
                 

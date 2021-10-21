@@ -3,7 +3,7 @@ require_relative '../helpers/property_status'
 
 class Property 
   include PropertyStatus
-  attr_reader :id, :name, :description, :price
+  attr_reader :id, :name, :description, :price, :status
 
   def initialize(id, name, description, price, status = PropertyStatus::AVAILABLE)
     @id = id
@@ -13,13 +13,12 @@ class Property
     @status = status
   end
 
-  def self.add_property(name, description, price)
-    query = "INSERT INTO property_listings(name, description, price) VALUES($1, $2, $3)" +
-             " RETURNING id, name, description, price;"
-    params = [name, description, price]
+  def self.add_property(name, description, price, status = PropertyStatus::AVAILABLE)
+    query = "INSERT INTO property_listings(name, description, price, status) VALUES($1, $2, $3, $4)" +
+             " RETURNING id, name, description, price, status;"
+    params = [name, description, price, status]
     result = DatabaseConnection.query(query, params)
-    Property.new(result[0]["id"], result[0]["name"], result[0]["description"], 
-result[0]["price"])
+    Property.new(result[0]["id"], result[0]["name"], result[0]["description"], result[0]["price"], result[0]['status'])
   end
 
   def self.update_status(id)
@@ -33,8 +32,7 @@ result[0]["price"])
     query =  "SELECT * FROM property_listings;"
     result = DatabaseConnection.query(query, [])
     result.map do |property|
-      Property.new(property["id"], property["name"], property["description"], 
-        property["price"])
+      Property.new(property["id"], property["name"], property["description"], property["price"], property['status'])
     end
   end
 
@@ -43,10 +41,9 @@ result[0]["price"])
     params = [id]
     result = DatabaseConnection.query(query, params)
     property = result.map do |property|
-      Property.new(property["id"], property["name"], property["description"], property["price"])
+      Property.new(property["id"], property["name"], property["description"], property["price"], property['status'])
     end
     property.empty? ? nil : property[0]
   end
-
 
 end

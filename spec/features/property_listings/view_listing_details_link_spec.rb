@@ -9,4 +9,3 @@ feature 'Properties on the index page' do
     expect(page).to have_current_path '/'
   end
 end
-

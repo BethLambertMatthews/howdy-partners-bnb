@@ -20,6 +20,7 @@ class HowdyPartnersBnB < Sinatra::Base
   end
 
   get '/listing-details/:id' do
+    @requested = params[:requested]
     @property = Property.find_by_id(params[:id])
     @current_user = session[:current_user]
     redirect('/') if @property.nil?
@@ -29,7 +30,7 @@ class HowdyPartnersBnB < Sinatra::Base
   post '/request-booking/:id' do
     Property.update_status(params[:id])
     flash[:notice] = "You have requested this property"
-    redirect("/listing-details/#{params[:id]}")
+    redirect("/listing-details/#{params[:id]}?requested=true")
   end
 
   get '/sign-up' do
