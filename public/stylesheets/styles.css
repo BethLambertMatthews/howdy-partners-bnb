@@ -6,13 +6,13 @@ body {
 
 .container {
   text-align: center;
-  border: 8px solid skyblue;
+  border: 8px solid indianred;
   border-radius: 5px;
   margin: auto;
   margin-top: 20px;
   width: 50%;
   padding-bottom: 10px;
-  background-color: aliceblue;
+  background-color: rgba(128, 128, 0, 0.8);
 }
 
 .form-container {
@@ -41,7 +41,7 @@ body {
 }
 
 .button {
-  background-color: lightblue;
+  background-color: goldenrod;
   border-radius: 10px;
   box-shadow: white;
   color: black;
@@ -51,6 +51,12 @@ body {
   text-decoration: none;
   display: inline-block;
   font-size: 1rem;
+}
+
+.page-button-bar {
+  text-align: right;
+  margin: -10px;
+  background-color: orange;
 }
 
 .property-description {
