@@ -4,6 +4,7 @@ require 'rspec'
 require 'simplecov'
 require 'simplecov-console'
 require_relative './setup_test_database'
+require_relative './web_helpers'
 
 ENV['RACK_ENV'] = 'test'
 ENV['ENVIRONMENT'] = 'test'
@@ -11,6 +12,8 @@ ENV['ENVIRONMENT'] = 'test'
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
 
 Capybara.app = HowdyPartnersBnB
+# Capybara.server = :webrick
+# Capybara.default_driver = :selenium_chrome
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console
