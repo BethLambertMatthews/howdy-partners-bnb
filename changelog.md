@@ -1,5 +1,26 @@
 ## Changelog
 
+## Ticket name: HP-feature_01
+
+### Date - Time: 20/10/2021 - 15:25
+
+Description: Users can now see properties on the homepage
+
+### Added
+
+- index.erb
+
+### Changed
+
+- app.rb
+- changelog.md
+- lib/model/property.rb
+- spec/setup_test_database.rb
+- spec/unit/model/property_spec.rb
+
+### Fixed
+
+---
 ### Date - Time: 20/10/2021 - 11:06
 
 Description: Added 'add property' functionality to create property listing in howdy partners database.

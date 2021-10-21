@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/styles.css" rel="stylesheet">
+  <title>Howdy Partners BnB</title>
+</head>
+<body>
+  <div class="home-container">
+    <div class="heading">
+      <h1 class="page-title">Howdy Partners BnB &#129312;</h1>
+      <p class="tag-line">Your go-to place for the rootinist tootinist holiday homes in the wild west.</p>
+      <hr class="heading-rule">
+    </div>
+    <div class="property-listings">
+      <%@all_properties.each do|property| %>
+        <div class="property">
+          <h3><%=property.name%></h3>
+          <img height="200px" src="https://i.pinimg.com/736x/91/64/21/9164210a14b2bb43635a9ac5750b9f99.jpg">
+          <p><%=property.description%></p>
+          <p>£<%=property.price%></p>
+          <hr>
+        </div>
+      <%end%>
+    </div>
+  </div>
+  <p>Howdy Partners :) current user id:<%=@current_user%></p>
+</body>
+</html>
