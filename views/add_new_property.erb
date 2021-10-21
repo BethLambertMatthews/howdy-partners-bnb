@@ -1,10 +1,37 @@
-<h1>Add a new property listing</h1>
-  <form method="post" action="/add-new-property" >
-    <label for="Name of property">Name of property:</label>
-    <input type="text" name="name" placeholder="Property Name" maxlength="60" required><br>
-    <label for="Property price per night">Property price per night:</label>
-    <input type="number" name="price" max="999.99" placeholder="Property Price" required><br>
-    <label for="Description of property">Description of property:</label>
-    <textarea name="description" placeholder="Property Description" maxlength="300" required></textarea><br>
-    <input type="submit" value="Submit">
-  </form>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/styles.css" rel="stylesheet">
+  <title>Sign Up</title>
+</head>
+<body>
+  <div class="container">
+
+    <h1>Add a new property listing</h1>
+    <div class="form-container">
+      <form method="post" action="/add-new-property" >
+        <div class="form-field">
+          <label for="Name of property">Name of property:</label><br>
+          <input type="text" name="name" placeholder="Property Name" maxlength="60" required>
+        </div>
+        <div class="form-field">
+          <label for="Property price per night">Property price per night:</label><br>
+        <input type="number" name="price" max="999.99" step="any" placeholder="Property Price" required>
+        </div>
+        <div class="form-field">
+          <label for="Description of property">Description of property:</label><br>
+          <textarea class="property-description" name="description" placeholder="Property Description" maxlength="300" required></textarea>
+        </div>
+        <div class="form-field center-button">
+          <input class="button" type="submit" value="Submit">
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

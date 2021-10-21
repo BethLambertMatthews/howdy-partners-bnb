@@ -19,4 +19,14 @@ class Property
 result[0]["price"])
   end
 
+  def self.all_properties()
+    query =  "SELECT * FROM property_listings"
+    result = DatabaseConnection.query(query, [])
+    result.map do |property|
+      Property.new(property["id"], property["name"], property["description"], 
+        property["price"])
+
+    end
+  end
+
 end

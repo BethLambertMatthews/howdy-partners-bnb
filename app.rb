@@ -14,8 +14,9 @@ class HowdyPartnersBnB < Sinatra::Base
   register Sinatra::Flash
 
   get '/' do
-    puts session[:current_user]
-    "Howdy Partners :) current user id:#{session[:current_user]}"
+    @all_properties = Property.all_properties
+    @current_user = session[:current_user]
+    erb :index
   end
 
   get '/sign-up' do

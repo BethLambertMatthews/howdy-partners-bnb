@@ -18,6 +18,23 @@ Description: An existing user can log into their account
 - app.rb
 - lib/model/user.rb
 - spec/unit/model/user_spec.rb
+## Ticket name: HP-feature_01
+
+### Date - Time: 20/10/2021 - 15:25
+
+Description: Users can now see properties on the homepage
+
+### Added
+
+- index.erb
+
+### Changed
+
+- app.rb
+- changelog.md
+- lib/model/property.rb
+- spec/setup_test_database.rb
+- spec/unit/model/property_spec.rb
 
 ### Fixed
 
