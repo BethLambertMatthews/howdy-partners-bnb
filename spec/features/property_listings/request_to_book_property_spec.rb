@@ -13,6 +13,7 @@ feature 'Request to book property button on property details page' do
     add_default_property_listings
     visit_more_details_page
     expect(page).to_not have_content('Log in to book')
+    expect(Property).to receive(:update_status).with('1')
     click_button('Request to book')
     expect(page).to have_current_path('/listing-details/1')
     expect(page).to have_content('You have requested this property')

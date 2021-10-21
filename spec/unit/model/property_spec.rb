@@ -26,6 +26,22 @@ describe Property do
       expect(property.price).to eq(59.99)
     end
   end
+
+  describe 'update_status' do
+    it 'updates the status of a property' do
+      expected_status = "requested"
+      update_query = "UPDATE property_listings SET status=$1 WHERE id=$2 RETURNING status;"
+      update_params = [PropertyStatus::REQUESTED, '1']
+        
+      expect(DatabaseConnection).to receive(:query).with(update_query, update_params)
+        .and_return([{'status' => expected_status}])
+                
+      result = Property.update_status(update_params[1])
+        
+      expect(result).to eq(expected_status)
+    end
+  end
+
   describe 'all_properties' do
     context 'there are no properties' do
       it 'returns an empty array' do

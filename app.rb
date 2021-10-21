@@ -27,7 +27,7 @@ class HowdyPartnersBnB < Sinatra::Base
   end
 
   post '/request-booking/:id' do
-    # Property.update_status(params[:id])
+    Property.update_status(params[:id])
     flash[:notice] = "You have requested this property"
     redirect("/listing-details/#{params[:id]}")
   end
