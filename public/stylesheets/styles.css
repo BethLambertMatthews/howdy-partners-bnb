@@ -29,7 +29,7 @@ body {
   padding-bottom: 10px;
   padding-left: 10px;
   padding-right: 10px;
-  background-color: aliceblue;
+  background-color: rgba(128, 128, 0, 0.8);
 }
 
 .form-field {
@@ -65,10 +65,15 @@ body {
 }
 
 .heading-rule {
-  border-top: 5px solid black;
+  border-top: 5px solid indianred;
+}
+
+.heading {
+  background-color: goldenrod;
+  margin: -10px;
 }
 
 .tag-line {
   text-align: center;
-  color: darkslategray;
+  color: maroon;
 }
