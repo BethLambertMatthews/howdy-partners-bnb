@@ -1,13 +1,37 @@
-<h1>Log in with your details</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/stylesheets/styles.css" rel="stylesheet">
+  <title>Log In</title>
+</head>
 
-<h2><%= flash[:notice] %></h2>
+<body>
+  <div class="container">
+  
+    <h1>Log in with your details</h1>
+    <h2><%= flash[:notice] %></h2>
 
-  <form method="post" action="/login" >
-    <label for="email">Email:</label>
-    <input type="email" name="email" placeholder="Your email" maxlength="60" required><br>
-    <label for="password">Password:</label>
-    <input type="password" name="password" maxlength="60" placeholder="Your password" required><br>
-    <input type="submit" value="Log in">
-  </form>
+    <div class="form-container">
+      <form method="post" action="/login" >
+        <div class="form-field">
+          <label for="email">Email:</label><br>
+          <input type="email" name="email" placeholder="Your email" maxlength="60" required>
+        </div>
+        <div class="form-field">
+          <label for="password">Password:</label><br>
+          <input type="password" name="password" maxlength="60" placeholder="Your password" required>
+        </div>
+        <div class="form-field center-button">
+          <input class="button" type="submit" value="Log in">
+        </div>
+      </form>
+    </div>
 
-  <h2>Sign up <a href="/sign-up">here</a></h2>
+    <h3>Need an account? Sign up <a href="/sign-up">here!</a></h2>
+ 
+  </div>
+  
+</body>

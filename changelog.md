@@ -1,6 +1,21 @@
 ## Changelog
 
 ---
+## Ticket name: HP-general_08
+
+### Date - Time: 22/10/2021 - 11:07
+
+Description: Updating CSS on login page to match sign up page
+
+### Added
+
+### Changed
+
+- views/login.erb
+
+### Fixed
+
+---
 ## Ticket name: HP-general_06
 
 ### Date - Time: 21/10/2021 - 17:22
