@@ -74,7 +74,8 @@ class HowdyPartnersBnB < Sinatra::Base
     redirect('/')
   end
 
-  get '/my-proerties' do
+  get '/my-properties' do
+    @current_user = session[:current_user]
     @my_properties = Property.find_properties_by_owner_id(session[:current_user])
     erb :my_properties
   end

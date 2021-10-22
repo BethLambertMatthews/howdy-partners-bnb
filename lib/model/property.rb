@@ -47,4 +47,14 @@ class Property
     property.empty? ? nil : property[0]
   end
 
+  def self.find_properties_by_owner_id(owner_id)
+    query =  "SELECT * FROM property_listings WHERE owner_id = $1;"
+    params = [owner_id]
+    result = DatabaseConnection.query(query, params)
+    property = result.map do |property|
+      Property.new(property["id"], property["name"], property["description"], property["price"], property['status'], property['owner_id'])
+    end
+    return property
+  end
+
 end
