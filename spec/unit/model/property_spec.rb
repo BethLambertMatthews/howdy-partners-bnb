@@ -38,7 +38,7 @@ describe Property do
       update_params = [PropertyStatus::REQUESTED, '1']
 
       expect(DatabaseConnection).to receive(:query).with(update_query, update_params)
-        .and_return([{'status' => expected_status}])
+        .and_return([{ 'status' => expected_status }])
                 
       result = Property.update_status(update_params[1])
         
@@ -115,8 +115,8 @@ describe Property do
         select_query = "SELECT * FROM property_listings WHERE owner_id = $1;"
         select_param = ['1']
         response = [
-          { "id" => "1", "name" => "The Rodeo", "description" => "A great place to stay", "price" => "100.00", "status" => "requested" , "owner_id" => '1' },
-          { "id" => "2", "name" => "The Other Rodeo", "description" => "A another great place to stay", "price" => "101.00", "status" => "available" , "owner_id" => '1' }
+          { "id" => "1", "name" => "The Rodeo", "description" => "A great place to stay", "price" => "100.00", "status" => "requested", "owner_id" => '1' },
+          { "id" => "2", "name" => "The Other Rodeo", "description" => "A another great place to stay", "price" => "101.00", "status" => "available", "owner_id" => '1' }
         ]
 
         expect(DatabaseConnection).to receive(:query).with(select_query, select_param).and_return(response)

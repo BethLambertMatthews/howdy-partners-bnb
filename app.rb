@@ -50,7 +50,8 @@ class HowdyPartnersBnB < Sinatra::Base
   end
 
   post '/add-new-property' do
-    Property.add_property(params[:name], params[:description], params[:price], session[:current_user])
+    Property.add_property(params[:name], params[:description], params[:price], 
+session[:current_user])
     redirect('/')
   end
 

@@ -15,11 +15,12 @@ class Property
   end
 
   def self.add_property(name, description, price, status = PropertyStatus::AVAILABLE, owner_id)
-    query = "INSERT INTO property_listings(name, description, price, status, owner_id) VALUES($1, $2, $3, $4, $5)" +
-             " RETURNING id, name, description, price, status, owner_id;"
+    query = "INSERT INTO property_listings(name, description, price, status, owner_id)" + 
+            "VALUES($1, $2, $3, $4, $5) RETURNING id, name, description, price, status, owner_id;"
     params = [name, description, price, status, owner_id]
     result = DatabaseConnection.query(query, params)
-    Property.new(result[0]["id"], result[0]["name"], result[0]["description"], result[0]["price"], result[0]['status'], result[0]['owner_id'])
+    Property.new(result[0]["id"], result[0]["name"], result[0]["description"], result[0]["price"], 
+result[0]['status'], result[0]['owner_id'])
   end
 
   def self.update_status(id)
@@ -33,7 +34,8 @@ class Property
     query =  "SELECT * FROM property_listings;"
     result = DatabaseConnection.query(query, [])
     result.map do |property|
-      Property.new(property["id"], property["name"], property["description"], property["price"], property['status'], property['owner_id'])
+      Property.new(property["id"], property["name"], property["description"], property["price"], 
+property['status'], property['owner_id'])
     end
   end
 
@@ -42,7 +44,8 @@ class Property
     params = [id]
     result = DatabaseConnection.query(query, params)
     property = result.map do |property|
-      Property.new(property["id"], property["name"], property["description"], property["price"], property['status'], property['owner_id'])
+      Property.new(property["id"], property["name"], property["description"], property["price"], 
+property['status'], property['owner_id'])
     end
     property.empty? ? nil : property[0]
   end
@@ -52,7 +55,8 @@ class Property
     params = [owner_id]
     result = DatabaseConnection.query(query, params)
     property = result.map do |property|
-      Property.new(property["id"], property["name"], property["description"], property["price"], property['status'], property['owner_id'])
+      Property.new(property["id"], property["name"], property["description"], property["price"], 
+property['status'], property['owner_id'])
     end
     return property
   end
