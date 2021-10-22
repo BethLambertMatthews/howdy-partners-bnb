@@ -1,9 +1,10 @@
+require 'dotenv/load'
 require './lib/database/database_connection'
 
 if ENV['ENVIRONMENT'] == 'test'
-  DatabaseConnection.setup('howdy_partners_test')
+  DatabaseConnection.setup(ENV['TEST_DB'])
 else
   # :nocov:
-  DatabaseConnection.setup('howdy_partners')
+  DatabaseConnection.setup(ENV['PROD_DB'])
   # :nocov:
 end
