@@ -8,31 +8,55 @@
   <title>Howdy Partners BnB</title>
 </head>
 <body>
-  <div class="property-listings">
-      <div class="property">
-        <h3><%=@property.name%></h3>
-        <img height="200px" src="https://i.pinimg.com/736x/91/64/21/9164210a14b2bb43635a9ac5750b9f99.jpg">
-        <p><%=@property.description%></p>
-        <p>£<%=@property.price%></p>
-        <p>Property Status: <%=@property.status%></p>
+  <div class="home-container">
+
+      <div class="heading">
+        <h1 class="page-title">Howdy Partners BnB &#129312;</h1>
+        <p class="tag-line">Your go-to place for the rootinist tootinist holiday homes in the wild west.</p>
+        <hr class="heading-rule">
       </div>
-      <div>
-        <%= flash[:notice] %>
-        <% if @current_user == nil %>
-        <div>
-          <a id="login-link" href="/login"><button class="button">Log in to book</button></a>
-        </div>
-        <% elsif @requested %>
-        <div>
-          <a id="home-link" href="/"><button class="button">Return to Homepage</button></a>
-        </div>
-        <% else %>
-          <form method="post" action="/request-booking/<%= @property.id %>">
-            <input id="request-button" type="submit" value="Request to book" class="button">
+
+      <div class="page-button-bar">
+        <% if @current_user != nil%>
+          <a id="new-property-link" href="/add-new-property"><button class="button">Add Listing</button></a>
+          <a id="my-properties-link" href="/my-properties"><button class="button">My Properties</button></a>
+          <form method="post" action="/logout">
+            <input class="button" type="submit" value="Log Out"/>
           </form>
-        <% end %>
+        <%else%>
+          <a id="login-link" href="/login"><button class="button">Log In</button></a>
+          <a id="sign-up-link" href="/sign-up"><button class="button">Sign Up</button></a>
+        <%end%>
       </div>
-  </div>
+
+    <div class="property-listings">
+        <div class="property">
+          <h3><%=@property.name%></h3>
+          <img height="200px" src="https://i.pinimg.com/736x/91/64/21/9164210a14b2bb43635a9ac5750b9f99.jpg">
+          <p><%=@property.description%></p>
+          <p>£<%=@property.price%></p>
+          <p>Property Status: <%=@property.status%></p>
+        </div>
+        <div>
+          <%= flash[:notice] %>
+          <% if @current_user == nil %>
+          <div>
+            <a id="login-to-book-link" href="/login"><button class="button">Log in to book</button></a>
+          </div>
+          <% elsif @requested %>
+          <div>
+            <a id="home-link" href="/"><button class="button">Return to Homepage</button></a>
+          </div>
+          <% else %>
+            <form method="post" action="/request-booking/<%= @property.id %>">
+              <input id="request-button" type="submit" value="Request to book" class="button">
+            </form>
+          <% end %>
+        </div>
+    </div>
+
+</div>
+
   <p>Howdy Partners :) current user id:<%=@current_user%></p>
 </body>
 </html>
