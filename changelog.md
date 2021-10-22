@@ -1,6 +1,21 @@
 ## Changelog
 
 ---
+## Ticket name: HP-general_10
+
+### Date - Time: 22/10/2021 - 12.55
+
+Description: Add styling to Property Listing Details page
+
+### Added
+
+### Changed
+
+- views/listing_details.erb
+
+### Fixed
+
+---
 ## Ticket name: HP-general_08
 
 ### Date - Time: 22/10/2021 - 11:07
