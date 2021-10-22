@@ -17,6 +17,13 @@ def create_and_sign_up_test_user
   sign_up_test_user
 end
 
+def log_user_in
+  visit('/login')
+  fill_in 'email', with: "john.wayne@yeehaw.com"
+  fill_in 'password', with: "Cactus123"
+  click_button 'Log in'
+end
+
 def visit_more_details_page
   visit('/')
   click_link('view_details_1')
