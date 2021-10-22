@@ -1,5 +1,6 @@
 feature 'Add Property' do
   scenario 'should create and add property to the property listing database' do
+    sign_up_test_user
     visit("/add-new-property")
     expect(page).to have_content("Add a new property listing")
     expect(page).to have_content("Name of property:")

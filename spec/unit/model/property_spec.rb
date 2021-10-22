@@ -4,10 +4,10 @@ require 'helpers/property_status'
 describe Property do
   let(:mocked_database_response) { double :mocked_database_response }
 
-  describe 'add_property' do
+  describe '#add_property' do
     it 'adds a property to the database' do
-      insert_query = "INSERT INTO property_listings(name, description, price, status) VALUES($1, $2, $3, $4) RETURNING id, name, description, price, status;"
-      insert_params = ['The Ranch', 'A good place for horses', 59.99, PropertyStatus::AVAILABLE]
+      insert_query = "INSERT INTO property_listings(name, description, price, status, owner_id) VALUES($1, $2, $3, $4, $5) RETURNING id, name, description, price, status, owner_id;"
+      insert_params = ['The Ranch', 'A good place for horses', 59.99, PropertyStatus::AVAILABLE, 1]
       expected_id = "1"
         
       expect(DatabaseConnection).to receive(:query).with(insert_query, insert_params)
@@ -17,15 +17,17 @@ describe Property do
               'name' => insert_params[0], 
               'description' => insert_params[1], 
               'price' => insert_params[2],
-              'status' => insert_params[3]
+              'status' => insert_params[3],
+              'owner_id' => insert_params[4]
               }])
                 
-      property = Property.add_property(insert_params[0], insert_params[1], insert_params[2], insert_params[3])
+      property = Property.add_property(insert_params[0], insert_params[1], insert_params[2], insert_params[3], insert_params[4])
         
       expect(property.id).to eq(expected_id)
       expect(property.name).to eq("The Ranch")
       expect(property.description).to eq("A good place for horses")
       expect(property.price).to eq(59.99)
+      expect(property.owner_id).to eq(1)
     end
   end
 
@@ -36,7 +38,7 @@ describe Property do
       update_params = [PropertyStatus::REQUESTED, '1']
 
       expect(DatabaseConnection).to receive(:query).with(update_query, update_params)
-        .and_return([{'status' => expected_status}])
+        .and_return([{ 'status' => expected_status }])
                 
       result = Property.update_status(update_params[1])
         
@@ -93,6 +95,36 @@ describe Property do
         result = Property.find_by_id(select_param.first)
         
         expect(result.name).to eq("The Rodeo")
+      end
+    end
+  end
+
+  describe '#find_properties_by_owner_id' do
+    context 'there is no matching property' do
+      it 'returns an empty array' do
+        select_query = "SELECT * FROM property_listings WHERE owner_id = $1;"
+        select_param = ['1']
+        expect(DatabaseConnection).to receive(:query).with(select_query,select_param).and_return []
+        result = Property.find_properties_by_owner_id(select_param.first)
+        expect(result).to eq([])
+      end
+    end
+
+    context 'there is a matching property' do
+      it 'returns an array of all properties' do
+        select_query = "SELECT * FROM property_listings WHERE owner_id = $1;"
+        select_param = ['1']
+        response = [
+          { "id" => "1", "name" => "The Rodeo", "description" => "A great place to stay", "price" => "100.00", "status" => "requested", "owner_id" => '1' },
+          { "id" => "2", "name" => "The Other Rodeo", "description" => "A another great place to stay", "price" => "101.00", "status" => "available", "owner_id" => '1' }
+        ]
+
+        expect(DatabaseConnection).to receive(:query).with(select_query, select_param).and_return(response)
+
+        result = Property.find_properties_by_owner_id(select_param.first)
+        
+        expect(result[0].name).to eq("The Rodeo")
+        expect(result[1].name).to eq("The Other Rodeo")
       end
     end
   end

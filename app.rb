@@ -45,11 +45,13 @@ class HowdyPartnersBnB < Sinatra::Base
   end
 
   get '/add-new-property' do
-    erb :add_new_property
+    redirect('/') if session[:current_user].nil?
+    erb(:add_new_property)
   end
 
   post '/add-new-property' do
-    Property.add_property(params[:name], params[:description], params[:price])
+    Property.add_property(params[:name], params[:description], params[:price], 
+session[:current_user])
     redirect('/')
   end
 
@@ -72,6 +74,13 @@ class HowdyPartnersBnB < Sinatra::Base
     result = User.log_out
     session[:current_user] = result
     redirect('/')
+  end
+
+  get '/my-properties' do
+    redirect('/') if session[:current_user].nil?
+    @current_user = session[:current_user]
+    @my_properties = Property.find_properties_by_owner_id(session[:current_user])
+    erb :my_properties
   end
 
   run! if app_file == $0
