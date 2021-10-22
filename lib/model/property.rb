@@ -16,7 +16,7 @@ class Property
 
   def self.add_property(name, description, price, status = PropertyStatus::AVAILABLE, owner_id)
     query = "INSERT INTO property_listings(name, description, price, status, owner_id)" + 
-            "VALUES($1, $2, $3, $4, $5) RETURNING id, name, description, price, status, owner_id;"
+            " VALUES($1, $2, $3, $4, $5) RETURNING id, name, description, price, status, owner_id;"
     params = [name, description, price, status, owner_id]
     result = DatabaseConnection.query(query, params)
     Property.new(result[0]["id"], result[0]["name"], result[0]["description"], result[0]["price"], 
