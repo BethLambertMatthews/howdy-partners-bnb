@@ -21,5 +21,5 @@ end
 private
 
 def connect_to_test_db
-  PG.connect(dbname: 'howdy_partners_test')
+  PG.connect(dbname: ENV['TEST_DB'])
 end

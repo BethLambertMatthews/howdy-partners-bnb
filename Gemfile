@@ -10,3 +10,4 @@ gem 'simplecov', require: false
 gem 'simplecov-console', require: false
 gem 'selenium-webdriver'
 gem 'sinatra-flash'
+gem 'dotenv'
