@@ -45,7 +45,8 @@ class HowdyPartnersBnB < Sinatra::Base
   end
 
   get '/add-new-property' do
-    erb :add_new_property
+    redirect('/') if session[:current_user].nil?
+    erb(:add_new_property)
   end
 
   post '/add-new-property' do
@@ -75,6 +76,7 @@ class HowdyPartnersBnB < Sinatra::Base
   end
 
   get '/my-properties' do
+    redirect('/') if session[:current_user].nil?
     @current_user = session[:current_user]
     @my_properties = Property.find_properties_by_owner_id(session[:current_user])
     erb :my_properties
