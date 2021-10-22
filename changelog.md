@@ -1,6 +1,26 @@
 ## Changelog
 
 ---
+## Ticket name: HP-general_06
+
+### Date - Time: 21/10/2021 - 17:22
+
+Description: Adding buttons needed for the homepage
+
+### Added
+- spec/features/logged_in_user_can_see_log_out_button_spec.rb
+- spec/features/user_can_access_buttons_on_homepage_spec.rb
+
+### Changed
+
+- app.rb
+- lib/model/user.rb
+- spec/unit/model/user_spec.rb
+- views/index.erb
+
+### Fixed
+
+---
 ## Ticket name: HP-bugfix_02
 
 ### Date - Time: 21/10/2021 - 14:25

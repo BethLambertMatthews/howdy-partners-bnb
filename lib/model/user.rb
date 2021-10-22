@@ -18,4 +18,10 @@ class User
 
     result.num_tuples.zero? ? "This user does not exist" : result[0]['id']    
   end
+
+  def self.log_out
+    logged_out_id = nil
+    return logged_out_id
+  end
+
 end
